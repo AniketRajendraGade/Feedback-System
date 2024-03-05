@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mb-4">Feedback Form</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!--erorrrr sccjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj-->
+        {% if errors %}
+        <div class="alert alert-danger">
+          <ul>
+            {% for field, error in errors.items %}
+            <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        <div class="form-group">
+          <label for="serial_number">Serial Number:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="serial_number"
+            name="serial_number"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone_number">Phone Number:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone_number"
+            name="phone_number"
+            pattern="[0-9]{10}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="visit_first_time">Visiting First Time?</label><br />
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="visit_first_time_yes"
+              name="visit_first_time"
+              value="yes"
+            />
+            <label class="form-check-label" for="visit_first_time_yes"
+              >Yes</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="visit_first_time_no"
+              name="visit_first_time"
+              value="no"
+            />
+            <label class="form-check-label" for="visit_first_time_no">No</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="food_you_liked">Which food you liked?</label><br />
+          <div class="form-check form-check-inline">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="burger"
+              name="food_you_liked"
+              value="Burger"
+            />
+            <label class="form-check-label" for="burger">Burger</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="fries"
+              name="food_you_liked"
+              value="Fries"
+            />
+            <label class="form-check-label" for="fries">Fries</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="mcnuggets"
+              name="food_you_liked"
+              value="McNuggets"
+            />
+            <label class="form-check-label" for="mcnuggets">McNuggets</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="salad"
+              name="food_you_liked"
+              value="Salad"
+            />
+            <label class="form-check-label" for="salad">Salad</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="soft_drink"
+              name="food_you_liked"
+              value="Soft Drink"
+            />
+            <label class="form-check-label" for="soft_drink">Soft Drink</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="time_slot">Preferred Time Slot:</label>
+          <select class="form-control" id="time_slot" name="time_slot">
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+            <option value="Late night">Late night</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="upload_photo">Upload Photo:</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="upload_photo"
+            name="upload_photo"
+            accept="image/*"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      </form>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

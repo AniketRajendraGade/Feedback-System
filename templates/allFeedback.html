@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Feedback</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Additional Custom CSS can be added here */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5 mb-4">All Feedback</h1>
+      <form method="GET" class="mb-4">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            placeholder="Search by name..."
+          />
+          <div class="form-group col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              name="food"
+              placeholder="Food You Liked"
+            />
+          </div>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Serial Number</th>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Visiting First Time</th>
+              <th>Food You Liked</th>
+              <th>Time Slot</th>
+              <th>Upload Photo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in feedback %}
+            <tr>
+              <td>{{ item.serial_number }}</td>
+              <td>{{ item.Name }}</td>
+              <td>{{ item.Phone_number }}</td>
+              <td>{{ item.Email }}</td>
+              <td>{{ item.Visit_First_Time }}</td>
+              <td>{{ item.Food_You_liked }}</td>
+              <td>{{ item.Time_slot }}</td>
+              <td>
+                <img
+                  src="{{ item.Upload_Photo.url }}"
+                  alt="Photo"
+                  class="img-fluid"
+                  style="max-width: 50px"
+                />
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Bootstrap JS and jQuery (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
